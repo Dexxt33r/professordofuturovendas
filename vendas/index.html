@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Professor do Futuro — Curso de Slides com IA, Inclusão e Gestão</title>
+  <meta name="description" content="Curso para professores: crie materiais didáticos com Inteligência Artificial em minutos, adapte para a inclusão (AEE, TEA, TDAH) e gestão da sala de aula digital. Ferramentas gratuitas.">
+  <meta name="keywords" content="curso para professores, inteligência artificial na educação, slides com IA, materiais didáticos com IA, educação inclusiva, AEE, TEA, TDAH, formação de professores, prompts para professores, ChatGPT para professores, Canva para educadores">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Professor do Futuro">
+  <link rel="canonical" href="https://professor-do-futuro-vendas.vercel.app/">
+  <!-- Open Graph (WhatsApp, Facebook, etc.) -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://professor-do-futuro-vendas.vercel.app/">
+  <meta property="og:title" content="Professor do Futuro — Crie aulas com IA em minutos">
+  <meta property="og:description" content="Curso para professores: slides, avaliações e materiais inclusivos com Inteligência Artificial. 58 prompts prontos, 6 módulos e acesso imediato.">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Professor do Futuro">
+  <meta property="og:image" content="https://professor-do-futuro-vendas.vercel.app/img/og.jpg">
+  <meta property="og:image:width" content="1024">
+  <meta property="og:image:height" content="1024">
+  <meta property="og:image:alt" content="Ecosistema Professor do Futuro — curso com IA para professores">
+  <!-- Twitter/X -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Professor do Futuro — Crie aulas com IA em minutos">
+  <meta name="twitter:description" content="Curso para professores: slides, avaliações e materiais inclusivos com IA. 58+ prompts prontos.">
+  <meta name="twitter:image" content="https://professor-do-futuro-vendas.vercel.app/img/og.jpg">
+  <meta name="twitter:image:alt" content="Ecosistema Professor do Futuro">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "Professor do Futuro",
+    "description": "Curso para professores: crie materiais didáticos com Inteligência Artificial em minutos e adapte para a inclusão (AEE, TEA, TDAH).",
+    "provider": {
+      "@type": "Organization",
+      "name": "Professor do Futuro"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "97.00",
+      "priceCurrency": "BRL",
+      "availability": "https://schema.org/InStock"
+    },
+    "inLanguage": "pt-BR"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "Como acesso o curso depois de comprar?", "acceptedAnswer": { "@type": "Answer", "text": "Assim que o pagamento for confirmado, você recebe um e-mail com suas credenciais de acesso (login e senha). É só entrar e começar. A entrega é automática na grande maioria dos casos." } },
+      { "@type": "Question", "name": "Quais formas de pagamento?", "acceptedAnswer": { "@type": "Answer", "text": "Cartão de crédito, boleto e Pix, processados com segurança pelo Mercado Pago. O valor é parcelável no cartão." } },
+      { "@type": "Question", "name": "É seguro comprar aqui?", "acceptedAnswer": { "@type": "Answer", "text": "Sim. O site roda com conexão criptografada (HTTPS) e os dados do cartão não passam por este site: a digitação acontece na página do Mercado Pago, que processa o pagamento. Usamos seu nome e e-mail apenas para entregar o acesso e para o atendimento, conforme a política de privacidade (LGPD)." } },
+      { "@type": "Question", "name": "E se eu não gostar ou não conseguir aplicar?", "acceptedAnswer": { "@type": "Answer", "text": "Você tem 7 dias corridos para desistir e receber 100% do valor de volta, sem justificar nada — é o seu direito de arrependimento do art. 49 do CDC. Basta enviar o pedido para o e-mail de atendimento, e o estorno é feito pelo mesmo meio de pagamento. Antes de comprar, você também pode navegar pelo site e tirar dúvidas por e-mail." } },
+      { "@type": "Question", "name": "Por quanto tempo tenho acesso?", "acceptedAnswer": { "@type": "Answer", "text": "O acesso fica liberado enquanto o curso existir — não é assinatura e não há prazo escondido." } },
+      { "@type": "Question", "name": "O certificado tem validade oficial?", "acceptedAnswer": { "@type": "Answer", "text": "É um certificado de curso livre, com as 24h de carga horária sugerida. Vale como comprovação de formação continuada; não é curso de graduação nem tem vínculo com o MEC." } },
+      { "@type": "Question", "name": "Não entendo nada de tecnologia ou IA. Vou conseguir usar?", "acceptedAnswer": { "@type": "Answer", "text": "Vai, sim — o curso foi feito para quem nunca usou IA. Você copia um prompt pronto, cola no ChatGPT ou no Canva e troca só o [TEMA] da sua aula; todas as ferramentas têm versão gratuita." } },
+      { "@type": "Question", "name": "Serve para a matéria e a série que eu leciono?", "acceptedAnswer": { "@type": "Answer", "text": "Serve: os prompts são genéricos de propósito — você informa o componente, a série e o tema, e o resultado sai no formato da sua aula. Da Educação Infantil ao Ensino Médio, o que muda é o conteúdo, não o método." } },
+      { "@type": "Question", "name": "Gera conteúdos alinhados com a BNCC?", "acceptedAnswer": { "@type": "Answer", "text": "Os módulos de Educação Financeira e Nanotecnologia cobrem temas transversais da BNCC do Ensino Médio (Bloco 1). As ferramentas geram o material a partir da série que você informar, e o curso ensina a amarrar cada atividade aos objetivos que você já trabalha com a turma." } },
+      { "@type": "Question", "name": "Como adapto provas de alunos laudados (TEA/TDAH)?", "acceptedAnswer": { "@type": "Answer", "text": "O Módulo 2 é inteiro sobre isso: Easy Read, pictogramas, CAA e design anti-sobrecarga, com prompts de adaptação prontos. No Laboratório, o Gerador de Atividade tem a opção de adaptação para TEA/TDAH: você cola o conteúdo e recebe a folha A4 pronta para imprimir." } }
+    ]
+  }
+  </script>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/sculpture-hero.css?v=1">
+</head>
+<body>
+
+  <!-- BARRA DE CONFIANÇA (sem urgência falsa: não há contagem regressiva
+       artificial. A data/oferta só muda quando você mudar de verdade.) -->
+  <div class="urg-bar">🎓 Curso livre · Acesso imediato por e-mail · Suporte direto com quem fez o curso</div>
+
+  <header class="nav">
+    <div class="container">
+      <a href="#" class="logo"><span class="logo-ic">🎓</span><span><em>Professor</em> do Futuro</span></a>
+      <nav class="nav-links" id="navLinks">
+        <a href="#ferramentas">Ferramentas</a>
+        <a href="#aprendizagem">Conteúdo</a>
+        <a href="#incluso">O que está incluso</a>
+        <a href="escolas.html">Para escolas</a>
+        <a href="#preco">Preço</a>
+        <a href="#faq">Perguntas</a>
+      </nav>
+      <div class="top-actions">
+        <a href="#preco" class="btn btn-primary" data-track="cta_nav">Comprar agora</a>
+        <button class="burger" id="burger" aria-label="Abrir menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-text">
+        <span class="hero-badge">🎓 Formação para educadores · da Ed. Infantil ao Ensino Médio</span>
+        <h1>Prepare a aula com IA em 15 minutos — <span>e ela já sai adaptada para TEA e TDAH</span></h1>
+        <p class="lead">Sem precisar saber de tecnologia: você copia um prompt pronto, cola e o material sai — com <b>ChatGPT, Claude, Gamma, Canva e Google Slides</b> (todos com versão gratuita), da Educação Infantil ao Ensino Médio, com <strong>58 prompts</strong> prontos para copiar e colar.</p>
+        <div class="hero-cta">
+          <a href="#preco" class="btn btn-light btn-lg" data-track="cta_hero_principal">Quero economizar tempo agora →</a>
+          <a href="escolas.html" class="btn btn-outline" data-track="cta_hero_escolas" style="background:rgba(255,255,255,.12);color:#fff;border-color:rgba(255,255,255,.5)">Sou escola / rede →</a>
+        </div>
+        <div class="hero-note">⭐ <strong>201 slides</strong> (82 do curso + 119 nas coleções) · <strong>6 módulos</strong> · <strong>11 ferramentas</strong> · <strong>2 decks bônus</strong> · acesso imediato</div>
+        <ul class="hero-bullets">
+          <li><b>15 minutos</b>: do tema da semana ao slide pronto — não mais uma tarde</li>
+          <li>Prova e atividade <b>já em versão acessível</b>: Easy Read, pictogramas e menos estímulos para TEA/TDAH</li>
+          <li>Tudo em ferramentas gratuitas — e funciona até <b>sem internet</b> na escola</li>
+        </ul>
+        <div class="hero-stats">
+          <div class="hero-stat"><strong>6</strong><span>Módulos</span></div>
+          <div class="hero-stat"><strong>58</strong><span>Prompts prontos</span></div>
+          <div class="hero-stat"><strong>75+</strong><span>Slides interativos</span></div>
+          <div class="hero-stat"><strong>24h</strong><span>Carga horária</span></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <!-- Escultura líquida (WebGL2): o cursor derrete o material e ele
+             volta sozinho. Veja js/sculpture-hero.js. -->
+        <div class="sculpt-stage" data-sculpture>
+          <img class="sculpt-fallback" alt="Capelo de formatura dourado e a escrita Professor do Futuro" aria-hidden="true" draggable="false">
+          <span class="sculpt-hint">✨ Passe o mouse pela escultura</span>
+        </div>
+        <div class="cert-card">
+          <div class="cc-ic">⚡</div>
+          <h3>Aula pronta em 15 minutos</h3>
+          <p>Roteiro + slides + atividade criados com IA, do jeito que funciona para a sua turma.</p>
+          <span class="cc-tag">✔ Certificado de conclusão</span>
+        </div>
+      </div>
+    </div>
+  </section>
+<!-- COMO FUNCIONA -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Simples assim</span>
+        <h2>Como você recebe e começa</h2>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-n">1</div>
+          <div class="step-ic">🧾</div>
+          <h3>Preencha seu nome e e-mail</h3>
+          <p>É só informar onde você quer receber o acesso. Leva 10 segundos.</p>
+        </div>
+        <div class="step">
+          <div class="step-n">2</div>
+          <div class="step-ic">💳</div>
+          <h3>Pague com cartão, Pix ou boleto</h3>
+          <p>Processado com segurança pelo <b>Mercado Pago</b>. Parcelável em até 3x.</p>
+        </div>
+        <div class="step">
+          <div class="step-n">3</div>
+          <div class="step-ic">📥</div>
+          <h3>Receba o acesso por e-mail na hora</h3>
+          <p>Assim que o pagamento for aprovado, chega seu login e senha. Comece na mesma hora.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEMA → SOLUÇÃO -->
+  <section class="section alt">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">A realidade</span>
+        <h2>Você não precisa de mais uma hora de trabalho</h2>
+        <p>Você precisa de <b>menos horas</b> para preparar a mesma aula.</p>
+      </div>
+      <div class="duo">
+        <div class="duo-card problem">
+          <h3>😩 Se você hoje…</h3>
+          <ul>
+            <li><span class="b">→</span><span>Passa uma tarde inteira montando um slide que era pra ser uma "tarefa rápida";</span></li>
+            <li><span class="b">→</span><span>Não consegue adaptar um material para o aluno com TEA/TDAH ou com deficiência;</span></li>
+            <li><span class="b">→</span><span>Enfrenta turmas apáticas, dispersas ou desafiadoras e não sabe o que fazer;</span></li>
+            <li><span class="b">→</span><span>Sente que a IA poderia te ajudar, mas não sabe por onde começar com direção e ética.</span></li>
+          </ul>
+        </div>
+        <div class="duo-card solution">
+          <h3>🚀 Em 15 minutos você…</h3>
+          <ul>
+            <li><span class="b">✓</span><span>Materiais didáticos prontos <b>em minutos, não em horas</b>;</span></li>
+            <li><span class="b">✓</span><span>Versões acessíveis de tudo: CAA, pictogramas, leitura fácil e design anti-sobrecarga;</span></li>
+            <li><span class="b">✓</span><span>Estratégias e dinâmicas prontas para engajar alunos rebeldes;</span></li>
+            <li><span class="b">✓</span><span>Prompts prontos para copiar, colar e usar na hora — com o seu olhar pedagógico no controle.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+<!-- FERRAMENTAS (DESTAQUE) -->
+  <section class="section" id="ferramentas">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">As ferramentas certas</span>
+        <h2>Domine as ferramentas que param de "roubar" seu tempo</h2>
+        <p>Você não compra nenhum programa caro: todas têm versão gratuita e o curso te ensina a tirar o máximo delas. O seu tempo volta para o que importa.</p>
+      </div>
+      <div class="tools-grid">
+        <div class="tool-card">
+          <div class="tool-lo">🤖</div>
+          <div class="tool-body">
+            <h4>ChatGPT <span class="t-badge">gratuito</span></h4>
+            <p>Crie roteiros de aula, explicações, atividades e avaliações a partir de um prompt pronto. O curso ensina os prompts que funcionam de verdade.</p>
+          </div>
+        </div>
+        <div class="tool-card">
+          <div class="tool-lo">🧠</div>
+          <div class="tool-body">
+            <h4>Claude <span class="t-badge">gratuito</span></h4>
+            <p>Ótimo para textos longos e didáticos: apostilas, sequências, planos e materiais escritos com qualidade em poucos segundos.</p>
+          </div>
+        </div>
+        <div class="tool-card">
+          <div class="tool-lo">🎞️</div>
+          <div class="tool-body">
+            <h4>Gamma <span class="t-badge">gratuito</span></h4>
+            <p>Gere apresentações prontas e bonitas a partir de um roteiro. Em minutos você tem slides profissionais para projetar.</p>
+          </div>
+        </div>
+        <div class="tool-card">
+          <div class="tool-lo">🎨</div>
+          <div class="tool-body">
+            <h4>Canva (Design Mágico) <span class="t-badge">grátis p/ professor</span></h4>
+            <p>Transforme texto em slide visual, personalize cores, pictogramas e crie materiais lúdicos — mesmo para quem não é designer.</p>
+          </div>
+        </div>
+        <div class="tool-card">
+          <div class="tool-lo">📑</div>
+          <div class="tool-body">
+            <h4>Google Slides + Gemini <span class="t-badge">grátis</span></h4>
+            <p>Roteiro gerado pela IA e slides montados no Google Slides: funciona em qualquer chromebook e na conta da escola.</p>
+          </div>
+        </div>
+        <div class="tool-card">
+          <div class="tool-lo">💻</div>
+          <div class="tool-body">
+            <h4>PowerPoint / Google Slides <span class="t-badge">já tem</span></h4>
+            <p>O fluxo "roteiro com IA em casa + edição offline na escola" para você trabalhar mesmo sem internet na sala.</p>
+          </div>
+        </div>
+      </div>
+      <p class="tools-note">⚡ Método prático em 4 passos: <b>Explorar → Copiar o prompt → Praticar → Aplicar</b>. Repetido em cada módulo para você fixar e usar no dia seguinte.</p>
+    </div>
+  </section>
+
+  <!-- O QUE VOCÊ VAI APRENDER -->
+  <section class="section alt" id="aprendizagem">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Conteúdo</span>
+        <h2>O que você vai aprender</h2>
+        <p>6 módulos, da prática à inclusão e à gestão da sala de aula digital.</p>
+      </div>
+      <div class="mod-grid">
+        <div class="mod-card">
+          <div class="mod-icon">🎞️</div>
+          <h3>Módulo 1 · Slides com IA</h3>
+          <p>Gamma, Canva (Design Mágico), Google Slides + Gemini, ChatGPT e Claude: apresentações profissionais em minutos e adaptação por faixa etária.</p>
+        </div>
+        <div class="mod-card">
+          <div class="mod-icon">🌈</div>
+          <h3>Módulo 2 · Inclusão e AEE</h3>
+          <p>Comunicação Alternativa (CAA), pictogramas, Easy Read e design anti-sobrecarga sensorial para TEA e TDAH.</p>
+        </div>
+        <div class="mod-card">
+          <div class="mod-icon">🤖</div>
+          <h3>Módulo 3 · IA na prática escolar</h3>
+          <p>IA como tutora de estudos, ética, detectores e avaliações à prova de IA (rubricas, defesa oral).</p>
+        </div>
+        <div class="mod-card">
+          <div class="mod-icon">🧭</div>
+          <h3>Módulo 4 · Gestão da sala de aula</h3>
+          <p>Engajamento, 3 níveis na mesma turma, combinados e dinâmicas para alunos rebeldes ou desengajados.</p>
+        </div>
+        <div class="mod-card">
+          <div class="mod-icon">💰</div>
+          <h3>Módulo 5 · Educação Financeira</h3>
+          <p>Tema transversal da BNCC no Ensino Médio (Bloco 1): vida familiar, social e bens pessoais, com simulações e jogos.</p>
+        </div>
+        <div class="mod-card">
+          <div class="mod-icon">🔬</div>
+          <h3>Módulo 6 · Nanotecnologia</h3>
+          <p>Abordagem interdisciplinar para o Ensino Médio: escala nano, aplicações do cotidiano, riscos e ética.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POR DENTRO DO CURSO (prints reais da plataforma) -->
+  <section class="section" id="por-dentro">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Por dentro do curso</span>
+        <h2>Veja onde você vai estudar</h2>
+        <p>São telas reais da plataforma — a mesma interface que você abre depois do login, sem mockup e sem promessa vazia.</p>
+      </div>
+      <div class="gallery">
+        <figure>
+          <img src="img/curso-home.jpg" alt="Home do curso Professor do Futuro com menu lateral, apresentação e resumo dos módulos" width="800" height="889" loading="lazy">
+          <figcaption><b>Comece pela home</b> — trilha de navegação, foco do curso e resumo do que te espera.</figcaption>
+        </figure>
+        <figure>
+          <img src="img/curso-progresso.jpg" alt="Painel de progresso do curso com módulos e atalhos por categoria" width="800" height="767" loading="lazy">
+          <figcaption><b>Painel de progresso</b> — você acompanha o que já concluiu e por onde continuar de onde parou.</figcaption>
+        </figure>
+        <figure>
+          <img src="img/curso-modulos.jpg" alt="Estrutura dos 6 módulos do curso com o conteúdo de cada módulo" width="800" height="622" loading="lazy">
+          <figcaption><b>6 módulos objetivos</b> — cada um com conteúdo, prompts prontos e checklist de entregas.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+<!-- O QUE ESTÁ INCLUSO -->
+  <section class="section" id="incluso">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Tudo incluso</span>
+        <h2>O que você recebe ao entrar</h2>
+        <p>Acesso completo e imediato após a confirmação do pagamento.</p>
+      </div>
+      <div class="include-grid">
+        <div class="include-item">
+          <div class="ii">🎞️</div>
+          <div><h4>Biblioteca de slides interativos <span class="count">75+</span></h4><p>Apresentações prontas para assistir e projetar, com leitura e aprofundamento.</p></div>
+        </div>
+        <div class="include-item">
+          <div class="ii">📋</div>
+          <div><h4>Banco de prompts <span class="count">58</span></h4><p>Prontos para copiar, colar e adaptar — organizados por módulo e categoria.</p></div>
+        </div>
+        <div class="include-item">
+          <div class="ii">⚡</div>
+          <div><h4>2 decks bônus</h4><p>Educação Financeira e Nanotecnologia completos, com apostilas e checklists.</p></div>
+        </div>
+        <div class="include-item">
+          <div class="ii">🛠️</div>
+          <div><h4>Laboratório do Professor</h4><p>Gerador de plano de aula, quiz e semáforo da sala — funciona até offline.</p></div>
+        </div>
+        <div class="include-item">
+          <div class="ii">📄</div>
+          <div><h4>Checklists de cada módulo</h4><p>Passo a passo para aplicar e registrar cada técnica em sala.</p></div>
+        </div>
+        <div class="include-item">
+          <div class="ii">🎓</div>
+          <div><h4>Certificado de conclusão</h4><p>Carga horária sugerida de 24h (formato extensivo).</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARA QUEM É -->
+  <section class="section alt" id="paraquem">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Público</span>
+        <h2>Feito para professores de verdade</h2>
+      </div>
+      <div class="who-grid">
+        <div class="who-card"><h4>👩‍🏫 Professores de sala</h4><p>Da Educação Infantil ao Ensino Médio, que querem preparar aulas melhores gastando menos tempo.</p></div>
+        <div class="who-card"><h4>🧩 Professores do AEE</h4><p>Que atuam com inclusão e precisam adaptar materiais para cada estudante com rapidez e qualidade.</p></div>
+        <div class="who-card"><h4>📐 Coordenadores e gestores</h4><p>Que formam equipes e buscam metodologias práticas usando as ferramentas gratuitas que a escola já tem.</p></div>
+        <div class="who-card"><h4>💡 Professores de apoio</h4><p>Que acompanham estudantes com TEA, TDAH e deficiência intelectual em sala.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRANSPARÊNCIA (substitui a prova social inventada) -->
+  <section class="section" id="transparencia">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Transparência</span>
+        <h2>O curso é novo. Não vou inventar depoimento.</h2>
+        <p>Você não vai achar aqui foto de "aluna satisfeita" nem estrelinhas compradas. Se você viu isso na internet, foi marketing — e é exatamente o que este site decidiu não fazer.</p>
+      </div>
+      <div class="duo">
+        <div class="duo-card problem">
+          <h3>🙈 O que eu ainda NÃO tenho</h3>
+          <ul>
+            <li><span class="b">→</span><span><b>Depoimentos:</b> os primeiros alunos estão aplicando o material agora. Os relatos entram aqui com nome e contexto — ou não entram.</span></li>
+            <li><span class="b">→</span><span><b>Número de alunos:</b> hoje é baixo. Você seria um dos primeiros.</span></li>
+            <li><span class="b">→</span><span><b>Nota em plataforma:</b> o curso roda em site próprio, então não existe nota de terceiros para exibir.</span></li>
+          </ul>
+        </div>
+        <div class="duo-card solution">
+          <h3>✅ O que eu garanto HOJE</h3>
+          <ul>
+            <li><span class="b">✓</span><span><b>O conteúdo já está no ar:</b> 6 módulos, 58 prompts, 75+ slides e o laboratório. Você vê tudo <b>antes</b> de pagar.</span></li>
+            <li><span class="b">✓</span><span><b>Resposta pessoal por e-mail.</b> Não é chatbot e não é equipe terceirizada.</span></li>
+            <li><span class="b">✓</span><span><b>7 dias de garantia:</b> devolução integral do valor, sem justificar nada — seu direito do art. 49 do CDC.</span></li>
+            <li><span class="b">✓</span><span><b>Pagamento único de R$ 97:</b> não é assinatura e não existe cobrança recorrente escondida.</span></li>
+            <li><span class="b">✓</span><span><b>Acesso enquanto o curso existir:</b> se um dia ele for descontinuado, você é avisado com 90 dias de antecedência e recebe os arquivos por e-mail.</span></li>
+            <li><span class="b">✓</span><span><b>Só ferramentas gratuitas:</b> ChatGPT, Claude, Gamma, Canva e Google Slides em versão gratuita — você não precisa comprar nenhum programa caro.</span></li>
+            <li><span class="b">✓</span><span><b>Laboratório que funciona offline:</b> as ferramentas rodam no seu navegador, mesmo sem internet na sala.</span></li>
+            <li><span class="b">✓</span><span><b>Sem urgência falsa:</b> nenhum contador regressivo artificial. Este preço não muda por truque — muda só se mudar de verdade.</span></li>
+            <li><span class="b">✓</span><span><b>Certificado honesto:</b> curso livre de 24h, sem vínculo com o MEC — e eu digo isso com todas as letras.</span></li>
+            <li><span class="b">✓</span><span><b>Compra pelo Mercado Pago:</b> os dados do cartão que você digita <b>não passam</b> por este site.</span></li>
+          </ul>
+        </div>
+      </div>
+      <p class="tools-note"> <b>Quer tirar dúvidas antes de comprar?</b> Escreva para <a href="#" data-seller="email">o e-mail de atendimento</a> que eu respondo pessoalmente — inclusive dizendo com todas as letras se o curso <b>não</b> serve para o seu caso.</p>
+    </div>
+  </section>
+
+  <!-- PARA ESCOLAS E REDES (oferta principal) -->
+  <section class="section alt" id="escolas">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Escolas, redes e secretarias</span>
+        <h2>Formação para a sua equipe, com data e conteúdo acordados</h2>
+        <p>Se você coordena uma equipe, o caminho não é comprar dezenas de acessos individuais: é uma formação desenhada para o seu contexto, com material liberado para todos os participantes.</p>
+      </div>
+      <div class="who-grid">
+        <div class="who-card"><h4>🧑‍🏫 Oficina de 4h (on-line ou presencial)</h4><p>Encontro prático no formato mais útil para a sua equipe. Cada professor sai com um material pronto, feito com IA, aplicado ao seu componente curricular.</p></div>
+        <div class="who-card"><h4>🌈 Trilha de inclusão (AEE)</h4><p>Foco em CAA, pictogramas, Easy Read e redução de sobrecarga sensorial — com os casos reais da sua escola na mesa.</p></div>
+        <div class="who-card"><h4> Licença do material completo</h4><p>O curso inteiro liberado para o corpo docente, com os 6 módulos, o banco de prompts e o laboratório.</p></div>
+        <div class="who-card"><h4>🧾 Documentação para a compra</h4><p>Proposta com escopo, carga horária e valores formais, no formato que a escola ou a rede precisa para empenhar e pagar.</p></div>
+      </div>
+      <p style="text-align:center;margin-top:1.8rem">
+        <a href="escolas.html" class="btn btn-primary btn-lg" data-track="cta_secao_escolas">Ver a proposta para escolas →</a>
+      </p>
+    </div>
+  </section>
+
+<!-- PREÇO / CTA -->
+  <section class="section pricing" id="preco">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Acesso completo</span>
+        <h2>R$ 97 por todo o curso, sem mensalidade</h2>
+        <p>Custa menos que <b>uma hora de aula particular</b> — e se paga no primeiro material que você deixar de montar do zero.</p>
+      </div>
+      <div class="price-box">
+        <div class="price-flag">🎓 Preço único · acesso completo</div>
+        <div class="price-now"><small>pagamento único de</small> <br>R$ 97</div>
+        <div class="price-installments">em até 3x no cartão · Pix ou boleto à vista</div>
+        <div class="mp-secure" style="margin-bottom:1.1rem">
+          <span>📄 Curso livre</span>
+          <span>⚡ Acesso imediato</span>
+        </div>
+
+        <form class="checkout-form" novalidate>
+          <div class="field">
+            <label for="cliente_nome">Seu nome</label>
+            <input type="text" id="cliente_nome" name="nome" placeholder="Nome completo" autocomplete="name" required>
+            <div class="field-error">Informe seu nome completo.</div>
+          </div>
+          <div class="field">
+            <label for="cliente_email">Seu melhor e-mail</label>
+            <input type="email" id="cliente_email" name="email" placeholder="voce@exemplo.com" autocomplete="email" required>
+            <div class="field-error">Informe um e-mail válido — é nele que você recebe seu acesso.</div>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block btn-lg">Quero meu acesso por R$ 97</button>
+        </form>
+        <p class="form-note">🔒 Pagamento seguro via Mercado Pago · acesso por e-mail na hora · <b>garantia de 7 dias</b></p>
+        <ul class="price-includes">
+          <li><span class="b">✓</span><span>6 módulos completos + 2 decks bônus</span></li>
+          <li><span class="b">✓</span><span>58 prompts prontos para copiar e colar</span></li>
+          <li><span class="b">✓</span><span>Certificado de conclusão (curso livre)</span></li>
+          <li><span class="b">✓</span><span>Acesso imediato por e-mail</span></li>
+        </ul>
+        <div class="mp-secure">
+          <span>🔒 Compra protegida</span>
+          <span>💳 Parcelamento no cartão</span>
+          <span>📱 Pix na hora</span>
+        </div>
+      </div>
+      <div class="secure-badges">
+        <span>🔐 Dados criptografados</span>
+        <span>⚡ Acesso imediato</span>
+      </div>
+
+      <!-- GARANTIA visível junto à decisão de compra (CDC art. 49) -->
+      <div class="guarantee-card" id="garantia">
+        <div class="gc-ic">🛡️</div>
+        <div class="gc-body">
+          <h3>Compre sem risco: 7 dias de garantia</h3>
+          <p>Você pode desistir da compra em até <b>7 dias corridos</b>, com <b>devolução integral</b> do valor pago — é o seu direito de arrependimento do <b>art. 49 do Código de Defesa do Consumidor</b>. Não é preciso justificar: basta enviar o pedido para o e-mail de atendimento informando o e-mail usado na compra, e o estorno é feito pelo mesmo meio de pagamento.</p>
+          <p class="gc-note">As condições completas estão em <a href="termos.html">termos de uso</a> (item 5). E antes de comprar, você pode navegar no site e tirar dúvidas por e-mail: quem responde é quem fez o curso — inclusive dizendo, com todas as letras, quando ele <b>não</b> é indicado para o seu caso.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section alt" id="faq">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Perguntas frequentes</span>
+        <h2>Ainda tem dúvidas?</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item open">
+          <button class="faq-q" type="button">Como acesso o curso depois de comprar?<span class="ic">+</span></button>
+          <div class="faq-a"><div class="inner">Assim que o pagamento for confirmado, você recebe um <b>e-mail com suas credenciais de acesso</b> (login e senha). É só entrar e começar. A entrega é automática na grande maioria dos casos.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button">Quais formas de pagamento?<span class="ic">+</span></button>
+          <div class="faq-a"><div class="inner">Cartão de crédito, boleto e Pix, processados com segurança pelo <b>Mercado Pago</b>. O valor é parcelável no cartão.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button">É seguro comprar aqui?<span class="ic">+</span></button>
+          <div class="faq-a"><div class="inner">Sim. O site roda com conexão criptografada (HTTPS) e os dados do cartão <b>não passam por este site</b>: a digitação acontece na página do <b>Mercado Pago</b>, que processa o pagamento. Usamos seu nome e e-mail apenas para entregar o acesso e para o atendimento, conforme a <a href="privacidade.html" style="color:var(--violet-600);font-weight:700">política de privacidade</a> (LGPD).</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button">Não entendo nada de tecnologia ou IA. Vou conseguir usar?<span class="ic">+</span></button>
+          <div class="faq-a"><div class="inner">Vai, sim — o curso foi feito para quem nunca usou IA. Você copia um prompt pronto, cola no ChatGPT ou no Canva e troca só o [TEMA] da sua aula; todas as ferramentas têm <b>versão gratuita</b>.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button">Serve para a matéria e a série que eu leciono?<span class="ic">+</span></button>
+          <div class="faq-a"><div class="inner">Serve: os prompts são genéricos de propósito — você informa o componente, a série e o tema, e o resultado sai no formato da sua aula. Da Educação Infantil ao Ensino Médio, o que muda é o conteúdo, não o método.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button">Gera conteúdos alinhados com a BNCC?<span class="ic">+</span></button>
+          <div class="faq-a"><div class="inner">Os módulos de Educação Financeira e Nanotecnologia cobrem <b>temas transversais da BNCC</b> do Ensino Médio (Bloco 1). As ferramentas geram o material a partir da série que você informar, e o curso ensina a amarrar cada atividade aos objetivos que você já trabalha com a turma.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button">Como adapto provas de alunos laudados (TEA/TDAH)?<span class="ic">+</span></button>
+          <div class="faq-a"><div class="inner">O <b>Módulo 2</b> é inteiro sobre isso: Easy Read, pictogramas, CAA e design anti-sobrecarga, com prompts de adaptação prontos. No Laboratório, o Gerador de Atividade tem a opção de adaptação para TEA/TDAH: você cola o conteúdo e recebe a folha A4 pronta para imprimir.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button">Quanto tempo de curso?<span class="ic">+</span></button>
+          <div class="faq-a"><div class="inner">Carga horária sugerida de <b>24h</b> (formato extensivo: 1 módulo por semana). No seu ritmo, você pode fazer mais rápido ou mais devagar.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button">Por quanto tempo tenho acesso?<span class="ic">+</span></button>
+          <div class="faq-a"><div class="inner">O acesso fica liberado <b>enquanto o curso existir</b> — não é assinatura e não há prazo escondido. Se o curso for descontinuado, você é avisado com <b>90 dias</b> de antecedência e recebe os arquivos do material no seu e-mail.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button">E se eu não gostar ou não conseguir aplicar?<span class="ic">+</span></button>
+          <div class="faq-a"><div class="inner">Você tem <b>7 dias corridos</b> para desistir e receber <b>100% do valor de volta</b>, sem justificar nada — é o seu direito de arrependimento do <b>art. 49 do CDC</b>. Basta enviar o pedido para o e-mail de atendimento, e o estorno é feito pelo mesmo meio de pagamento. Antes de comprar, você também pode navegar pelo site e tirar dúvidas por e-mail.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button">Sou escola, rede ou secretaria. Tem condição para equipe?<span class="ic">+</span></button>
+          <div class="faq-a"><div class="inner">Sim — e é um formato diferente: formação com data acordada para o seu grupo, escopo definido por escrito e licença do material para o corpo docente. Veja os detalhes em <a href="escolas.html" style="color:var(--violet-600);font-weight:700">Professor do Futuro para escolas</a> ou escreva para <a href="#" data-seller="email" style="color:var(--violet-600);font-weight:700">o e-mail de atendimento</a>.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button">O certificado tem validade oficial?<span class="ic">+</span></button>
+          <div class="faq-a"><div class="inner">É um <b>certificado de curso livre</b>, com as 24h de carga horária sugerida e o conteúdo programático descrito. Ele vale como comprovação de formação continuada e pode ser usado na sua progressão e no seu portfólio. Não é um curso de graduação nem tem vínculo com o <b>MEC</b> — e ninguém deveria te dizer o contrário.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button">Como falo com uma pessoa de verdade?<span class="ic">+</span></button>
+          <div class="faq-a"><div class="inner">Escrevendo para <a href="#" data-seller="email" style="color:var(--violet-600);font-weight:700">o e-mail de atendimento</a> <a href="#" data-whatsapp="Olá! Tenho uma dúvida sobre o curso Professor do Futuro." hidden style="color:var(--violet-600);font-weight:700">ou pelo WhatsApp</a>. Quem responde é quem fez o curso — não é chatbot e não é equipe terceirizada.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+<!-- CTA FINAL -->
+  <section class="final-cta">
+    <div class="container">
+      <h2>Seu tempo é precioso. Comece hoje.</h2>
+      <p>Em menos de 15 minutos você sai com um material pronto para usar — e uma rotina de trabalho diferente daqui pra frente.</p>
+      <a href="#preco" class="btn btn-light btn-lg" data-track="cta_final">Comprar por R$ 97 →</a>
+      <div class="secure-badges" style="margin-top:1.4rem">
+        <span>⚡ Acesso imediato</span>
+        <span>🎓 Certificado incluso</span>
+        <span>🛡️ Garantia de 7 dias</span>
+        <span>💳 Pix · Cartão · Boleto</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- BARRA FIXA NO CELULAR -->
+  <div class="mobile-cta">
+    <div class="mc-price"><b>R$ 97</b><span> · 3x no cartão</span></div>
+    <a href="#preco" class="btn btn-primary" data-track="cta_mobile">Comprar agora →</a>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="logo"><span class="logo-ic">🎓</span><span><em>Professor</em> do Futuro</span></div>
+
+      <!-- Identificação do fornecedor (preenchida pelo js/seller.js). -->
+      <p class="meta" data-seller-block="identificacao" hidden></p>
+
+      <p class="links">
+        <a href="termos.html">Termos de uso</a> ·
+        <a href="privacidade.html">Política de privacidade</a> ·
+        <a href="escolas.html">Para escolas</a> ·
+        <a href="#" data-whatsapp="Olá! Tenho uma dúvida sobre o curso Professor do Futuro." hidden>WhatsApp</a>
+      </p>
+
+      <p>&copy; 2026 Professor do Futuro · Todos os direitos reservados.<br>
+      Curso livre, sem vínculo com o MEC · <a href="termos.html">Termos</a> · <a href="privacidade.html">Privacidade</a></p>
+    </div>
+  </footer>
+
+  <script src="js/config.js?v=3"></script>
+  <script src="js/seller.js?v=1"></script>
+  <script src="js/analytics.js?v=1"></script>
+  <script src="js/checkout.js?v=3"></script>
+  <script src="js/sculpture-hero.js?v=1"></script>
+  <script>
+    // FAQ accordion + menu mobile
+    (function () {
+      document.querySelectorAll('.faq-q').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var item = btn.closest('.faq-item');
+          var isOpen = item.classList.contains('open');
+          document.querySelectorAll('.faq-item.open').forEach(function (o) { o.classList.remove('open'); });
+          if (!isOpen) item.classList.add('open');
+        });
+      });
+
+      // Menu mobile (burger)
+      var burger = document.getElementById('burger');
+      var navLinks = document.getElementById('navLinks');
+      if (burger && navLinks) {
+        burger.addEventListener('click', function () {
+          navLinks.classList.toggle('open');
+          document.body.classList.toggle('menu-open');
+        });
+        navLinks.addEventListener('click', function (e) {
+          if (e.target.tagName === 'A') {
+            navLinks.classList.remove('open');
+            document.body.classList.remove('menu-open');
+          }
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

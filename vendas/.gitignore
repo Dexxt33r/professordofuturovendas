@@ -1,0 +1,25 @@
+﻿# ============================================================
+# PROFESSOR DO FUTURO - SITE DE VENDAS
+# Arquivos que NAO devem ir ao GitHub (mesmo a pasta vendas/ versionada)
+# ============================================================
+
+# Credenciais e segredos em geral
+.env
+.env.*
+*.key
+secret*
+
+# Token OIDC da Vercel (criado pelo `vercel link`)
+.vercel/
+
+# Dependencias locais
+node_modules/
+
+# Artefatos locais da CLI do Supabase
+backend/supabase/.temp/
+backend/supabase/.env*
+
+# Sistema
+Thumbs.db
+.DS_Store
+desktop.ini

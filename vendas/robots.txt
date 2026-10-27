@@ -1,0 +1,15 @@
+# ============================================
+# PROFESSOR DO FUTURO - SITE DE VENDAS
+# ------------------------------------------------------------
+# Páginas de retorno do pagamento e páginas internas não devem
+# ser indexadas (conferem credenciais e status de transação).
+# Termos, privacidade e a página B2B PODEM ser indexadas.
+# ============================================
+
+User-agent: *
+Allow: /
+Disallow: /obrigado.html
+Disallow: /pendente.html
+Disallow: /falha.html
+
+Sitemap: https://professor-do-futuro-vendas.vercel.app/sitemap.xml

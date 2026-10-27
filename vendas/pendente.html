@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pagamento em análise — Professor do Futuro</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="result-page" data-analytics-page="pendente">
+
+  <header class="nav">
+    <div class="container">
+      <a href="index.html" class="logo"><span class="logo-ic">🎓</span><span><em>Professor</em> do Futuro</span></a>
+    </div>
+  </header>
+
+  <main class="result-wrap">
+    <div class="result-card warn">
+      <div class="result-ic">⏳</div>
+      <h1 id="pendTitle">Confirmando seu pagamento…</h1>
+      <p id="pendMsg">Detectamos que você optou por Pix/boleto. Assim que o Mercado Pago confirmar o pagamento, esta página <b>te leva automaticamente</b> para a tela com seu <b>e-mail e senha de acesso</b>.</p>
+      <p style="font-size:.9rem;color:var(--text-muted)">Não feche esta página — a confirmação costuma levar poucos segundos. Em caso de dúvida: <a href="#" data-seller="email" style="color:var(--violet-600);font-weight:700">—</a>.</p>
+      <div style="display:flex;align-items:center;justify-content:center;gap:.6rem;margin:1rem 0">
+        <span class="loading-spinner"></span><span id="pollState" style="font-size:.9rem;color:var(--text-muted)">Consultando o Mercado Pago…</span>
+      </div>
+      <a href="index.html" class="btn btn-outline btn-block">Voltar ao início</a>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p class="meta" data-seller-block="identificacao" hidden></p>
+      <p class="links">
+        <a href="termos.html">Termos de uso</a> ·
+        <a href="privacidade.html">Política de privacidade</a>
+      </p>
+      <p>&copy; 2026 Professor do Futuro · Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="js/config.js?v=3"></script>
+  <script src="js/seller.js?v=1"></script>
+  <script src="js/analytics.js?v=1"></script>
+  <script>
+    // Polling: verifica o status do pagamento a cada 5s. Quando aprovado,
+    // redireciona para a tela de "obrigado" (que mostra e-mail + senha).
+    (function () {
+      var cfg = window.SALES_CONFIG || {};
+      var email = '', senha = '';
+      try {
+        // email/senha agora vêm na URL de retorno (mesmo na "pendente"); o
+        // localStorage é apenas um complemento (funciona sem depender dele).
+        var qs = new URLSearchParams(window.location.search);
+        email = (qs.get('email') || '').trim().toLowerCase();
+        senha = (qs.get('senha') || '').trim();
+        if (!email) {
+          var raw = localStorage.getItem('pdf-venda-cliente');
+          if (raw) { var d = JSON.parse(raw); email = (d.email || '').trim().toLowerCase(); if (!senha && d.password) senha = d.password; }
+        }
+      } catch (e) {}
+
+      var state = document.getElementById('pollState');
+      var checks = 0;
+      var MAX_CHECKS = 30; // ~2,5 min (30 * 5s) de espera antes de avisar
+
+      function goApproved() {
+        if (state) state.textContent = 'Pagamento confirmado! Redirecionando…';
+        var target = cfg.successUrl || 'obrigado.html';
+        // Repassa email/senha para a "obrigado" exibir as credenciais mesmo
+        // em navegador/dispositivo diferente do que originou a compra.
+        try {
+          var pars = [];
+          if (email) pars.push('email=' + encodeURIComponent(email));
+          if (senha) pars.push('senha=' + encodeURIComponent(senha));
+          if (pars.length) target += (target.indexOf('?') === -1 ? '?' : '&') + pars.join('&');
+        } catch (e) {}
+        window.location.replace(target);
+      }
+
+      function contatoMsg() {
+        var suporte = (cfg.ownerEmail || 'kaiosantosss938@gmail.com');
+        return 'Se o pagamento foi feito, ele deve ser confirmado em alguns minutos. ' +
+               'Se nada acontecer, <a href="mailto:' + suporte + '" style="color:var(--violet-600);font-weight:700">entre em contato</a>.';
+      }
+
+      function check() {
+        checks++;
+        if (!email) {
+          if (state) state.innerHTML = 'Não encontramos os dados da sua compra nesta navegação. ' + contatoMsg();
+          return;
+        }
+        var base = (cfg.createPreferenceUrl || '').replace('/create-preference', '/payment-status');
+        fetch(base + '?email=' + encodeURIComponent(email))
+          .then(function (r) { if (!r.ok) throw new Error('http ' + r.status); return r.json(); })
+          .then(function (d) {
+            if (d && d.status === 'approved') { goApproved(); return; }
+            if (state) {
+              if (d && (d.status === 'rejected' || d.status === 'cancelled')) {
+                state.textContent = 'O pagamento não foi aprovado. Você pode tentar novamente com outra forma de pagamento.';
+              } else if (checks >= MAX_CHECKS) {
+                state.innerHTML = 'Ainda não confirmamos o pagamento. No Pix isso pode levar alguns minutos. ' + contatoMsg();
+              } else {
+                state.textContent = 'Consultando o Mercado Pago… (' + checks + ')';
+              }
+            }
+          })
+          .catch(function () {
+            if (state && checks >= MAX_CHECKS) state.innerHTML = 'Não foi possível falar com o servidor agora (tentamos '+ checks +' vezes). ' + contatoMsg();
+          });
+      }
+
+      check();
+      setInterval(check, 5000);
+    })();
+  </script>
+
+</body>
+</html>

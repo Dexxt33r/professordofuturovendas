@@ -1,0 +1,484 @@
+/* ============================================
+   PROFESSOR DO FUTURO — SITE DE VENDAS
+   Tema: Educação / Tecnologia / Inclusão
+   Promoção de conversão — preço, CTA e prova social
+   ============================================ */
+
+:root {
+  --indigo-900: #062b1b;
+  --indigo-800: #0b7a5e;
+  --indigo-700: #0f9d72;
+  --violet-600: #8a6a10;
+  --accent: #f59e0b;
+  --accent-soft: #fcd34d;
+  --pink: #ec4899;
+  --teal: #14b8a6;
+  --bg: #f6f8ee;
+  --bg-soft: #eef3e4;
+  --card: #ffffff;
+  --border: #e6efdc;
+  --text: #0f2a1e;
+  --text-muted: #5c6850;
+  --body: #2f4436;
+  --white: #ffffff;
+  --radius: 18px;
+  --radius-sm: 10px;
+  --shadow: 0 10px 30px rgba(6,43,27,0.08);
+  --shadow-lg: 0 24px 60px rgba(6,43,27,0.16);
+  --grad: linear-gradient(135deg,#0d3a23,#0f9d72 55%,#c9971c);
+  --ff: 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  color-scheme: light;
+}
+
+html { scroll-behavior: smooth; font-size: 18px; }
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* O atributo hidden só esconde de verdade se nenhum CSS declarar display no
+   elemento. Sem esta regra, classes como .btn (display: inline-flex) ignoram o
+   hidden — era por isso que o botão de WhatsApp aparecia no ar mesmo sem
+   número configurado, e clicando nele não acontecia nada. */
+[hidden] { display: none !important; }
+
+body {
+  font-family: var(--ff);
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+
+.container { width: min(1120px, 92%); margin: 0 auto; }
+
+/* ---------- Botões ---------- */
+.btn {
+  display: inline-flex; align-items: center; gap: .5rem;
+  padding: .95rem 2rem; border-radius: 999px;
+  font-weight: 700; font-size: 1.05rem; cursor: pointer;
+  border: 2px solid transparent; transition: .25s;
+  justify-content: center;
+}
+.btn-primary { background: var(--grad); color: #fff; box-shadow: 0 12px 30px rgba(201,151,28,.45); }
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 18px 38px rgba(201,151,28,.55); }
+.btn-outline { color: var(--violet-600); border-color: var(--violet-600); background: var(--card); }
+.btn-outline:hover { background: var(--bg-soft); }
+.btn-light { background: var(--card); color: var(--indigo-900); box-shadow: var(--shadow); }
+.btn-light:hover { transform: translateY(-3px); }
+.btn-lg { padding: 1.1rem 2.6rem; font-size: 1.2rem; }
+.btn-block { width: 100%; }
+
+/* ---------- Navbar ---------- */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(255,255,255,.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(201,151,28,.15);
+}
+.nav .container { display: flex; align-items: center; justify-content: space-between; height: 70px; gap: .8rem; }
+.logo { display: flex; align-items: center; gap: .65rem; font-weight: 800; font-size: 1.15rem; }
+.logo .logo-ic {
+  width: 40px; height: 40px; border-radius: 12px; background: var(--grad);
+  display: grid; place-items: center; color: #fff; font-size: 1.3rem;
+  box-shadow: var(--shadow);
+}
+.logo span em { color: var(--violet-600); font-style: normal; }
+.nav-links { display: flex; gap: 1.1rem; align-items: center; flex-wrap: nowrap; }
+.nav-links a { font-weight: 600; color: var(--text-muted); transition: .2s; white-space: nowrap; font-size: .95rem; }
+.nav-links a:hover { color: var(--violet-600); }
+.nav .btn { padding: .6rem 1.15rem; font-size: .88rem; white-space: nowrap; }
+.burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
+.burger span { width: 26px; height: 3px; background: var(--text); border-radius: 3px; transition: .3s; }
+
+/* ---------- Hero ---------- */
+.hero {
+  background:
+    radial-gradient(1100px 560px at 85% -10%, rgba(201,151,28,.22), transparent 60%),
+    radial-gradient(900px 520px at 0% 0%, rgba(15,157,114,.18), transparent 55%),
+    var(--grad);
+  color: #fff;
+  position: relative;
+}
+.hero .container { display: grid; grid-template-columns: 1.15fr .85fr; gap: 3rem; align-items: center; padding: 5rem 0 4.5rem; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: .5rem;
+  background: rgba(255,255,255,.16); border: 1px solid rgba(255,255,255,.3);
+  padding: .35rem .9rem; border-radius: 999px; font-size: .85rem; font-weight: 600;
+  margin-bottom: 1.2rem;
+}
+.hero h1 { font-size: clamp(1.9rem, 4vw, 3rem); font-weight: 800; line-height: 1.13; letter-spacing: -.5px; }
+.hero h1 span { color: var(--accent-soft); }
+.hero .lead { margin: 1.2rem 0 1.6rem; font-size: 1.12rem; color: rgba(255,255,255,.93); max-width: 34rem; }
+.hero-cta { display: flex; gap: .9rem; flex-wrap: wrap; }
+.hero-note { margin-top: 1.1rem; font-size: .88rem; color: rgba(255,255,255,.82); }
+.hero-note strong { color: var(--accent-soft); }
+.hero-chips { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.6rem; }
+.hero-chip {
+  display: inline-flex; align-items: center; gap: .45rem;
+  background: rgba(255,255,255,.14); padding: .5rem .95rem; border-radius: 999px;
+  font-size: .88rem; font-weight: 600;
+}
+.hero-bullets { list-style: none; margin: 1.5rem 0 0; padding: 0; display: grid; gap: .55rem; }
+.hero-bullets li {
+  display: flex; gap: .55rem; align-items: baseline;
+  font-size: .95rem; font-weight: 600; color: rgba(255,255,255,.95);
+}
+.hero-bullets li::before { content: "✓"; color: var(--accent-soft); font-weight: 800; flex: none; }
+.hero-bullets b { color: var(--accent-soft); }
+.hero-stats { display: grid; grid-template-columns: repeat(4,1fr); gap: .8rem; margin-top: 2rem; }
+.hero-stat {
+  background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2);
+  border-radius: var(--radius-sm); padding: .9rem .7rem; text-align: center;
+}
+.hero-stat strong { display: block; font-size: 1.5rem; color: var(--accent-soft); }
+.hero-stat span { font-size: .78rem; color: rgba(255,255,255,.85); }
+.hero-visual { text-align: center; }
+.cert-card {
+  background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.25);
+  border-radius: 22px; padding: 1.6rem; text-align: center;
+}
+.cert-card .cc-ic { font-size: 3.2rem; margin-bottom: .6rem; }
+.cert-card h3 { color: #fff; margin-bottom: .2rem; }
+.cert-card p { color: rgba(255,255,255,.85); font-size: .9rem; }
+.cert-card .cc-tag {
+  display: inline-flex; margin-top: .9rem; gap: .5rem; align-items: center;
+  background: var(--accent); color: var(--indigo-900); font-weight: 800;
+  padding: .4rem 1rem; border-radius: 999px; font-size: .85rem;
+}
+
+/* ---------- Section head ---------- */
+.section { padding: 4rem 0; }
+.section-head { text-align: center; max-width: 720px; margin: 0 auto 2.4rem; }
+.eyebrow {
+  display: inline-block; font-weight: 800; letter-spacing: 1px; text-transform: uppercase;
+  font-size: .78rem; color: var(--violet-600); margin-bottom: .6rem;
+}
+.section-head h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--indigo-900); margin-bottom: .8rem; }
+.section-head p { color: var(--text-muted); font-size: 1.02rem; }
+.section.alt { background: var(--bg-soft); }
+
+/* ---------- Problema / Solução ---------- */
+.duo { display: grid; grid-template-columns: 1fr 1fr; gap: 1.6rem; align-items: stretch; }
+.duo-card { border-radius: var(--radius); padding: 1.8rem; border: 1px solid var(--border); box-shadow: var(--shadow); }
+.duo-card.problem { background: rgba(236,72,153,.05); border-color: rgba(236,72,153,.25); }
+.duo-card.solution { background: rgba(15,157,114,.06); border-color: rgba(15,157,114,.3); }
+.duo-card h3 { margin-bottom: .8rem; color: var(--indigo-900); }
+.duo-card ul li { display: flex; gap: .6rem; align-items: flex-start; padding: .35rem 0; color: var(--body); }
+.duo-card ul li .b { flex: none; font-weight: 800; }
+.problem .b { color: var(--pink); }
+.solution .b { color: var(--teal); }
+
+/* ---------- Módulos ---------- */
+.mod-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.3rem; }
+.mod-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 1.5rem; box-shadow: var(--shadow); transition: .25s;
+}
+.mod-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.mod-icon {
+  width: 52px; height: 52px; border-radius: 14px; display: grid; place-items: center;
+  font-size: 1.5rem; background: var(--bg-soft); margin-bottom: 1rem;
+}
+.mod-card h3 { font-size: 1.08rem; color: var(--indigo-900); margin-bottom: .5rem; }
+.mod-card p { color: var(--text-muted); font-size: .94rem; }
+/* ---------- O que está incluso ---------- */
+.include-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+.include-item {
+  display: flex; gap: .9rem; align-items: flex-start; background: var(--card);
+  border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 1.1rem 1.2rem;
+  box-shadow: var(--shadow);
+}
+.include-item .ii { flex: none; width: 40px; height: 40px; border-radius: 10px; display: grid; place-items: center; font-size: 1.2rem; background: var(--bg-soft); }
+.include-item h4 { font-size: 1rem; color: var(--indigo-900); margin-bottom: .2rem; }
+.include-item p { font-size: .88rem; color: var(--text-muted); }
+.include-item .count { display: inline-flex; font-weight: 800; color: var(--violet-600); background: rgba(201,151,28,.12); padding: .15rem .6rem; border-radius: 999px; font-size: .78rem; margin-left: .4rem; }
+
+/* ---------- Para quem é ---------- */
+.who-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.2rem; }
+.who-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; box-shadow: var(--shadow); }
+.who-card h4 { color: var(--indigo-900); margin-bottom: .6rem; }
+.who-card p { color: var(--text-muted); font-size: .95rem; }
+
+/* ---------- Preço ---------- */
+.pricing { text-align: center; }
+.price-box {
+  max-width: 640px; margin: 0 auto; background: var(--card);
+  border: 2px solid var(--violet-600); border-radius: 26px; padding: 2.4rem 2rem;
+  box-shadow: var(--shadow-lg); position: relative;
+}
+.price-flag {
+  position: absolute; top: -16px; left: 50%; transform: translateX(-50%);
+  background: var(--accent); color: var(--indigo-900); font-weight: 800;
+  padding: .4rem 1.4rem; border-radius: 999px; font-size: .85rem;
+  box-shadow: 0 8px 20px rgba(245,158,11,.5); white-space: nowrap;
+}
+.price-now { font-size: clamp(2.6rem,6vw,4rem); font-weight: 800; color: var(--indigo-900); line-height: 1; margin: .4rem 0 .2rem; }
+.price-now small { font-size: .45em; color: var(--text-muted); font-weight: 600; }
+.price-installments { color: var(--violet-600); font-weight: 700; font-size: 1.05rem; margin-bottom: .5rem; }
+.price-includes { text-align: left; max-width: 400px; margin: 1.3rem auto 0; }
+.price-includes li { display: flex; gap: .6rem; align-items: flex-start; padding: .3rem 0; font-size: .95rem; color: var(--body); }
+.price-includes .b { color: var(--teal); flex: none; font-weight: 800; }
+.mp-secure { margin-top: 1rem; display: flex; align-items: center; justify-content: center; gap: .9rem; flex-wrap: wrap; color: var(--text-muted); font-size: .8rem; }
+
+/* ---------- Form ---------- */
+.checkout-form { max-width: 400px; margin: 0 auto; text-align: left; }
+.field { margin-bottom: 1rem; }
+.field label { display: block; font-size: .8rem; font-weight: 700; text-transform: uppercase; letter-spacing: .4px; color: var(--text-muted); margin-bottom: .4rem; }
+.field input {
+  width: 100%; padding: .85rem 1.05rem; border-radius: 12px; border: 1px solid var(--border);
+  background: var(--card); font-family: inherit; font-size: 1rem; color: var(--text); transition: .2s;
+}
+.field input:focus { outline: none; border-color: var(--violet-600); box-shadow: 0 0 0 3px rgba(201,151,28,.15); }
+.form-note { text-align: center; font-size: .8rem; color: var(--text-muted); margin-top: .7rem; }
+.field-error { font-size: .8rem; color: #dc2626; margin-top: .3rem; display: none; }
+.field.invalid .field-error { display: block; }
+.field.invalid input { border-color: #dc2626; }
+
+/* ---------- FAQ ---------- */
+.faq-list { max-width: 760px; margin: 0 auto; }
+.faq-item { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-sm); margin-bottom: .8rem; box-shadow: var(--shadow); overflow: hidden; }
+.faq-q { width: 100%; text-align: left; background: none; border: none; padding: 1.1rem 1.4rem; font-size: 1rem; font-weight: 700; color: var(--indigo-900); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem; font-family: inherit; }
+.faq-q .ic { transition: transform .25s; font-size: .9rem; color: var(--violet-600); }
+.faq-item.open .faq-q .ic { transform: rotate(45deg); }
+.faq-a { max-height: 0; overflow: hidden; transition: max-height .3s ease; }
+.faq-item.open .faq-a { max-height: 500px; }
+.faq-a .inner { padding: 0 1.4rem 1.2rem; color: var(--text-muted); font-size: .95rem; }
+
+/* ---------- CTA final ---------- */
+.final-cta {
+  background: var(--grad); color: #fff; text-align: center; padding: 4.5rem 0; position: relative;
+  overflow: hidden;
+}
+.final-cta h2 { font-size: clamp(1.7rem,4vw,2.6rem); margin-bottom: .8rem; }
+.final-cta p { color: rgba(255,255,255,.92); font-size: 1.1rem; max-width: 620px; margin: 0 auto 1.8rem; }
+
+/* Selos sobre o gradiente: usavam --text-muted (verde acinzentado) e ficavam
+   quase invisíveis por cima do verde/dourado. Agora são pastilhas brancas. */
+.final-cta .secure-badges { color: #fff; }
+.final-cta .secure-badges span {
+  background: rgba(255,255,255,.18); border: 1px solid rgba(255,255,255,.42);
+  padding: .38rem .9rem; border-radius: 999px; font-weight: 700; font-size: .85rem;
+}
+
+/* Dupla de botões do CTA (e-mail + WhatsApp): antes quebrava uma linha embaixo
+   da outra sem alinhamento. */
+.cta-actions { display: flex; gap: .8rem; justify-content: center; align-items: center; flex-wrap: wrap; margin: 1.4rem 0 .6rem; }
+.final-cta .btn-ghost { background: rgba(255,255,255,.16); color: #fff; border-color: rgba(255,255,255,.65); }
+.final-cta .btn-ghost:hover { background: rgba(255,255,255,.28); transform: translateY(-3px); }
+
+/* ---------- Footer ----------
+   O rodapé é escuro (#062b1b). Texto em --text-muted ficava invisível ali:
+   todos os textos do rodapé usam branco com opacidade alta. */
+.footer { background: var(--indigo-900); color: rgba(255,255,255,.82); padding: 2.2rem 0; text-align: center; }
+.footer .logo { justify-content: center; color: #fff; margin-bottom: .8rem; }
+.footer p { font-size: .9rem; color: rgba(255,255,255,.82); }
+.footer a { color: var(--accent-soft); font-weight: 700; }
+.footer a:hover { text-decoration: underline; }
+.footer .meta { font-size: .92rem; line-height: 1.9; margin: 1rem 0; color: rgba(255,255,255,.82); }
+.footer .links { font-size: .92rem; margin-top: .8rem; color: rgba(255,255,255,.82); }
+.footer .note { font-size: .86rem; color: rgba(255,255,255,.72); }
+
+/* ---------- Pages resultado (obrigado/falha/pendente) ---------- */
+.result-page { display: flex; flex-direction: column; min-height: 100vh; }
+.result-wrap { flex: 1; display: grid; place-items: center; padding: 3rem 1rem; }
+.result-card { max-width: 520px; text-align: center; background: var(--card); border-radius: 24px; padding: 2.6rem 2rem; box-shadow: var(--shadow-lg); border: 1px solid var(--border); }
+.result-ic { font-size: 3.4rem; margin-bottom: .8rem; }
+.result-card h1 { font-size: 1.7rem; color: var(--indigo-900); margin-bottom: .6rem; }
+.result-card p { color: var(--text-muted); margin-bottom: 1.4rem; }
+.result-card.ok { border-color: rgba(16,185,129,.5); }
+.result-card.warn { border-color: rgba(245,158,11,.5); }
+.result-card.err { border-color: rgba(220,38,38,.4); }
+
+/* ---------- Selos / misc ---------- */
+.secure-badges { display: flex; justify-content: center; gap: 1.4rem; flex-wrap: wrap; margin-top: 1.6rem; color: var(--body); font-size: .85rem; }
+.secure-badges span { display: inline-flex; align-items: center; gap: .4rem; }
+.loading-spinner { display: inline-block; width: 18px; height: 18px; border: 2px solid rgba(255,255,255,.4); border-top-color: #fff; border-radius: 50%; animation: spin .8s linear infinite; vertical-align: middle; margin-right: .4rem; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.btn[disabled] { opacity: .7; cursor: wait; }
+
+/* ---------- Barra de urgência ---------- */
+.urg-bar {
+  background: var(--accent); color: var(--indigo-900); text-align: center;
+  font-weight: 700; font-size: .92rem; padding: .6rem 1rem;
+}
+.urg-bar b { text-decoration: underline; text-underline-offset: 2px; }
+
+/* ---------- Passos (como funciona) ---------- */
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.3rem; }
+.step {
+  position: relative; background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 1.8rem 1.4rem 1.4rem; text-align: center;
+  box-shadow: var(--shadow);
+}
+.step-n {
+  position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+  width: 28px; height: 28px; border-radius: 50%; background: var(--grad);
+  color: #fff; font-weight: 800; display: grid; place-items: center; font-size: .9rem;
+  box-shadow: var(--shadow);
+}
+.step-ic { font-size: 2rem; margin-bottom: .6rem; }
+.step h3 { font-size: 1.05rem; color: var(--indigo-900); margin-bottom: .4rem; }
+.step p { color: var(--text-muted); font-size: .92rem; }
+
+/* ---------- Ferramentas ---------- */
+.tools-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+.tool-card {
+  display: flex; gap: .9rem; align-items: flex-start; background: var(--card);
+  border: 1px solid var(--border); border-radius: var(--radius); padding: 1.3rem;
+  box-shadow: var(--shadow); transition: .25s;
+}
+.tool-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+.tool-lo { flex: none; width: 52px; height: 52px; border-radius: 14px; background: var(--bg-soft); display: grid; place-items: center; font-size: 1.6rem; }
+.tool-body h4 { font-size: 1.02rem; color: var(--indigo-900); margin-bottom: .35rem; display: flex; align-items: center; flex-wrap: wrap; gap: .4rem; }
+.tool-body p { color: var(--text-muted); font-size: .9rem; }
+.t-badge {
+  display: inline-block; font-size: .68rem; font-weight: 800; color: #0f766e;
+  background: rgba(20,184,166,.12); padding: .15rem .5rem; border-radius: 999px; text-transform: uppercase; letter-spacing: .3px;
+}
+.tools-note { margin-top: 1.6rem; text-align: center; color: var(--text-muted); font-size: .98rem; background: rgba(201,151,28,.08); border: 1px dashed rgba(201,151,28,.4); border-radius: 14px; padding: 1rem; }
+
+/* ---------- CTA fixo no celular ---------- */
+.mobile-cta {
+  display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 120;
+  background: rgba(255,255,255,.96); backdrop-filter: blur(10px);
+  border-top: 1px solid var(--border); padding: .6rem 1rem;
+  align-items: center; justify-content: space-between; gap: .8rem;
+  box-shadow: 0 -8px 24px rgba(6,43,27,.1);
+}
+.mc-price { display: flex; align-items: baseline; gap: .45rem; flex-wrap: wrap; }
+.mc-price b { color: var(--indigo-900); font-size: 1.4rem; }
+.mc-price span { color: var(--text-muted); font-size: .78rem; }
+
+/* ---------- Top actions / menu ---------- */
+.top-actions { display: flex; align-items: center; gap: .6rem; }
+.top-actions .btn { margin: 0; }
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 900px) {
+  .steps, .tools-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 760px) {
+  .tools-grid { grid-template-columns: 1fr; }
+  .nav-links {
+    display: none; position: fixed; top: 0; right: 0; bottom: 0; width: 78%; max-width: 320px;
+    background: var(--card); flex-direction: column; align-items: flex-start; gap: .4rem;
+    padding: 5rem 1.6rem 2rem; box-shadow: var(--shadow-lg); z-index: 200;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links a { padding: .8rem 0; font-size: 1.05rem; width: 100%; border-bottom: 1px solid var(--border); }
+  .burger { display: flex; }
+  .mobile-cta { display: flex; }
+  body { padding-bottom: 70px; }
+  .final-cta { padding-bottom: 4.5rem; }
+}
+@media (max-width: 560px) {
+  .steps { grid-template-columns: 1fr; }
+}
+/* ---------- Responsivo ---------- */
+@media (max-width: 900px) {
+  .hero .container { grid-template-columns: 1fr; padding: 3.5rem 0 3rem; }
+  .hero-visual { order: -1; }
+  .mod-grid { grid-template-columns: repeat(2, 1fr); }
+  .duo, .include-grid, .who-grid { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+  .burger { display: flex; }
+}
+@media (max-width: 560px) {
+  .mod-grid { grid-template-columns: 1fr; }
+  .hero-stats { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ---------- Páginas legais (termos / privacidade / B2B) ---------- */
+.legal { max-width: 840px; margin: 0 auto; }
+.legal h1 { font-size: clamp(1.7rem, 3.6vw, 2.4rem); margin-bottom: .4rem; color: var(--indigo-900); line-height: 1.15; }
+.legal .updated { color: var(--text-muted); font-size: .88rem; margin-bottom: 1.6rem; }
+.legal h2 { font-size: 1.18rem; color: var(--indigo-900); margin: 1.9rem 0 .5rem; }
+.legal h3 { font-size: 1.02rem; color: var(--indigo-900); margin: 1.2rem 0 .3rem; }
+.legal p, .legal li { color: var(--body); font-size: .98rem; }
+.legal p { margin-bottom: .7rem; }
+.legal ul { margin: 0 0 .9rem 1.15rem; }
+.legal ul li { list-style: disc; margin-bottom: .3rem; }
+.legal a { color: var(--violet-600); font-weight: 700; }
+.legal .box { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 1rem 1.2rem; margin: 1rem 0; box-shadow: var(--shadow); }
+
+/* ---------- Tabela de planos: rolagem horizontal no celular ----------
+
+/* ---------- Ajuste do menu entre 901px e 1150px ----------
+   Nessa faixa o menu ainda é horizontal (o painel mobile entra em 900px) e os
+   cinco itens + botão ficam apertados no container de 1120px. Aqui só reduz o
+   respiro — nunca deixa quebrar em duas linhas. */
+@media (min-width: 901px) and (max-width: 1150px) {
+  .nav-links { gap: .75rem; }
+  .nav-links a { font-size: .88rem; }
+  .nav .btn { padding: .55rem .9rem; font-size: .82rem; }
+}
+
+/* Tabela de planos (página B2B) */
+.tabela { width: 100%; border-collapse: collapse; background: var(--card); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; box-shadow: var(--shadow); margin: 1.4rem 0; }
+.tabela th, .tabela td { padding: .85rem 1rem; text-align: left; font-size: .95rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+.tabela th { background: var(--bg-soft); color: var(--indigo-900); font-size: .82rem; text-transform: uppercase; letter-spacing: .4px; }
+.tabela tr:last-child td { border-bottom: none; }
+.tabela td b { color: var(--indigo-900); }
+.tabela .valor { white-space: nowrap; font-weight: 800; color: var(--violet-600); }
+
+/* ---------- Tabela de planos: rolagem horizontal no celular ----------
+   Quatro colunas não cabem em 375px: sem isso a tabela se espremia e ficava
+   ilegível justamente onde está a maior parte do tráfego. */
+.tabela-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+@media (max-width: 760px) {
+  .tabela { min-width: 640px; }
+}
+
+/* O e-mail é o texto do botão e pode ser longo: não pode estourar a tela */
+.cta-actions .btn { max-width: 100%; overflow-wrap: anywhere; }
+
+/* ---------- Galeria "por dentro do curso" (prints reais da plataforma) ----------
+   Os prints têm alturas naturais diferentes; o alinhamento no topo evita
+   cortes forçados nas imagens e mantém as legendas coladas à cada foto. */
+.gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; align-items: start; }
+.gallery figure {
+  margin: 0; background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow);
+}
+.gallery img { width: 100%; height: auto; display: block; border-bottom: 1px solid var(--border); }
+.gallery figcaption { padding: .95rem 1.1rem; font-size: .88rem; color: var(--text-muted); line-height: 1.5; }
+.gallery figcaption b { display: block; color: var(--indigo-900); margin-bottom: .15rem; }
+
+/* ---------- Cartão de garantia (junto ao preço) ----------
+   Viver só dentro do FAQ escondia o principal redutor de risco da compra.
+   Verde claro com borda sólida destaca sem brigar com o preço acima. */
+.guarantee-card {
+  max-width: 780px; margin: 2.2rem auto 0; display: flex; gap: 1.3rem; align-items: flex-start;
+  background: linear-gradient(180deg,#f2fbf6,#e7f6ee); border: 2px solid var(--indigo-700);
+  border-radius: 22px; padding: 1.7rem 1.8rem; box-shadow: var(--shadow);
+  text-align: left; scroll-margin-top: 90px;
+}
+.guarantee-card .gc-ic { font-size: 2.4rem; line-height: 1; flex: none; }
+.guarantee-card h3 { color: var(--indigo-900); font-size: 1.15rem; margin-bottom: .5rem; }
+.guarantee-card p { color: var(--body); font-size: .95rem; margin-bottom: .55rem; }
+.guarantee-card p:last-child { margin-bottom: 0; }
+.guarantee-card .gc-note { font-size: .86rem; color: var(--text-muted); }
+.guarantee-card a { color: var(--violet-600); font-weight: 700; text-decoration: underline; }
+
+@media (max-width: 900px) {
+  .gallery { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .guarantee-card { flex-direction: column; gap: .7rem; padding: 1.4rem 1.3rem; }
+}
+
+/* ---------- Celulares estreitos (≤560px) ----------
+   Logo + botão "Comprar agora" + hambúrguer não cabem juntos em ~360px e
+   estouravam a largura da página (overflow horizontal). Agora o logo trunca
+   com reticências e o CTA do topo mantém uma linha só. */
+@media (max-width: 560px) {
+  .nav .container { gap: .5rem; }
+  .logo { min-width: 0; flex: 1 1 auto; font-size: 1.02rem; }
+  .logo > span:last-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .top-actions { flex: none; }
+  .top-actions .btn { white-space: nowrap; padding: .6rem 1rem; font-size: .9rem; }
+}
