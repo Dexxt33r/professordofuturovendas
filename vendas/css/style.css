@@ -255,3 +255,53 @@ ul { list-style: none; }
 .footer p:last-child { font-size: .8rem; color: rgba(255,255,255,0.55); border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem; margin-top: 1.5rem; }
 
 @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr; } }
+
+/* ===== Background sutil com cor da marca ===== */
+body {
+  background:
+    radial-gradient(circle at 50% 25%, rgba(15, 157, 114, 0.05), transparent 45%),
+    radial-gradient(circle at 85% 80%, rgba(138, 106, 16, 0.04), transparent 40%),
+    var(--bg);
+  background-attachment: fixed;
+}
+
+/* Blobs decorativos sutis — dão profundidade sem poluir */
+.bg-blob {
+  position: fixed;
+  z-index: -1;
+  border-radius: 50%;
+  filter: blur(64px);
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.bg-blob-1 {
+  top: -8%;
+  left: -6%;
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(circle, rgba(15, 157, 114, 0.14), transparent 68%);
+}
+
+.bg-blob-2 {
+  bottom: -12%;
+  right: -8%;
+  width: 620px;
+  height: 620px;
+  background: radial-gradient(circle, rgba(138, 106, 16, 0.11), transparent 68%);
+}
+
+.bg-blob-3 {
+  top: 35%;
+  left: 8%;
+  width: 340px;
+  height: 340px;
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.07), transparent 68%);
+}
+
+@media (max-width: 768px) {
+  .bg-blob { filter: blur(48px); opacity: 0.25; }
+  .bg-blob-1 { width: 360px; height: 360px; }
+  .bg-blob-2 { width: 420px; height: 420px; }
+  .bg-blob-3 { width: 260px; height: 260px; }
+}
