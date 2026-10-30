@@ -52,7 +52,7 @@
   function setLoading(btn, loading, text, loadingText) {
     if (!btn) return;
     if (loading) {
-      btn.dataset.orig = btn.innerHTML;
+      btn.dataset.orig = btn.dataset.orig || btn.innerHTML;
       btn.disabled = true;
       btn.innerHTML = "<span class=\"loading-spinner\"></span>" + (loadingText || "Processando…");
     } else {
@@ -76,6 +76,16 @@
     });
   }
 
+  // Lista de cupons válidos e desconto em centavos (R$ 97,00 = 9700 centavos)
+  // Adicione novos cupons aqui no formato "CODIGO": descontoEmCentavos
+  var CUPONS_VALIDOS = {
+    "THY10": 970,   // 10% de desconto -> R$ 87,30
+    "MTH10": 970,   // 10% de desconto -> R$ 87,30
+    "CRR10": 970,   // 10% de desconto -> R$ 87,30
+    "VRG10": 970,   // 10% de desconto -> R$ 87,30
+    "JSA10": 970    // 10% de desconto -> R$ 87,30
+  };
+
   function startCheckout(form, btn) {
     var nameField = $id("cliente_nome");
     var emailField = $id("cliente_email");
@@ -97,31 +107,25 @@
     var precoCheio = priceCents;
     var descontoCentavos = 0;
     var valorFinal = precoCheio;
-
-    // Cupons de 10% de desconto (R$ 97 originais -> R$ 87,30 com desconto)
-    var cuponsValidos = {
-      "THY10": 970,   // 10% de 9700 = 970 centavos
-      "MTH10": 970,
-      "CRR10": 970,
-      "VRG10": 970,
-      "JSA10": 970
-    };
+    var cupomAplicado = "";
 
     if (cupom) {
-      if (cuponsValidos[cupom]) {
-        descontoCentavos = cuponsValidos[cupom];
+      var cupomUpper = cupom.toUpperCase();
+      if (CUPONS_VALIDOS.hasOwnProperty(cupomUpper)) {
+        descontoCentavos = CUPONS_VALIDOS[cupomUpper];
         valorFinal = precoCheio - descontoCentavos;
-        setLoading(btn, true, "Comprar agora", "Aplicando desconto…");
+        cupomAplicado = cupomUpper;
 
-        // Aplicar desconto imediatamente na interface
+        // Atualiza o preço exibido na interface imediatamente
         var btnValor = document.querySelector(".preco-atual");
         if (btnValor) btnValor.textContent = "R$ " + (valorFinal / 100).toFixed(2);
 
-        // Prosseguir para pagamento com o cupom aplicado
-        prosseguirParaPagamento(name, email, null, cupom, afiliado, precoCheio, descontoCentavos, valorFinal, btn);
+        // Prossegue para pagamento com o cupom aplicado
+        prosseguirParaPagamento(name, email, null, cupomAplicado, afiliado, precoCheio, descontoCentavos, valorFinal, btn);
       } else {
-        setLoading(btn, false, "Comprar agora");
-        showError(cupomField, "Cupom inválido ou não encontrado. Cupons disponíveis: THY10, MTH10, CRR10, VRG10, JSA10");
+        setLoading(btn, false, "Quero meu acesso por R$ 97");
+        var listaCupons = Object.keys(CUPONS_VALIDOS).join(", ");
+        showError(cupomField, "Cupom inválido ou não encontrado. Cupons disponíveis: " + listaCupons);
       }
       return;
     }
@@ -132,7 +136,7 @@
   function prosseguirParaPagamento(name, email, password, cupom, afiliado, precoCheio, descontoCentavos, valorFinal, btn) {
     if (!password) password = generatePassword();
     storeCustomer(email, name, password);
-    setLoading(btn, true, "Comprar agora", "Abrindo checkout…");
+    setLoading(btn, true, "Quero meu acesso por R$ 97", "Abrindo checkout…");
 
     function withCredentials(url) {
       try {
@@ -177,16 +181,17 @@
               afiliado: afiliado || ""
             });
           }
+          // Redireciona para o Checkout do Mercado Pago
           window.location.href = data.init_point;
         } else {
           throw new Error("A resposta não trouxe o link do checkout.");
         }
       })
-      .catch(function () {
+      .catch(function (err) {
         if (window.pdfTrack) {
-          window.pdfTrack("checkout_error", { reason: "create_preference_falhou" });
+          window.pdfTrack("checkout_error", { reason: "create_preference_falhou", detail: String(err && err.message ? err.message : err) });
         }
-        setLoading(btn, false, "Comprar agora");
+        setLoading(btn, false, "Quero meu acesso por R$ 97");
         var msg = "Não foi possível iniciar o pagamento agora. Tente novamente em instantes.";
         alert(msg);
       });
@@ -207,4 +212,5 @@
     document.addEventListener("DOMContentLoaded", init);
   } else {
     init();
-  } 
+  }
+})(); 

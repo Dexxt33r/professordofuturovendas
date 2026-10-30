@@ -482,3 +482,14 @@ ul { list-style: none; }
   .top-actions { flex: none; }
   .top-actions .btn { white-space: nowrap; padding: .6rem 1rem; font-size: .9rem; }
 }
+
+/* ---------- Cupom e preço no formulário de checkout ---------- */
+.preco-display { margin-top: 0.8rem; font-weight: 700; color: var(--indigo-900); font-size: 1.1rem; }
+.preco-atual { color: var(--violet-600); }
+
+.field input#cliente_cupom,
+.field input#cliente_afiliado { text-transform: uppercase; }
+
+/* ---------- Efeito de carregamento no botão ---------- */
+.loading-spinner { display: inline-block; width: 16px; height: 16px; border: 2px solid rgba(255,255,255,.4); border-top-color: #fff; border-radius: 50%; animation: spin 0.8s linear infinite; margin-right: .5rem; }
+@keyframes spin { to { transform: rotate(360deg); } }

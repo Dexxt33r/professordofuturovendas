@@ -32,7 +32,7 @@
     // Use SEMPRE a URL absoluta e pública do site de vendas publicado na Vercel.
     // Assim o Mercado Pago devolve o cliente para o SITE (domínio correto),
     // e não para um caminho/arquivo relativo quebrado.
-    siteUrl: 'https://professor-do-futuro-vendas.vercel.app',
+    siteUrl: 'https://professordofuturovendas.vercel.app',
 
     // >>> URL do site do curso (onde o aluno faz login com e-mail + senha) <<<
     courseUrl: 'https://professor-do-futuro-brown.vercel.app/',
@@ -82,8 +82,8 @@
     whatsapp: '',
 
     // URLs ABSOLUTAS para onde o aluno volta dependendo do status do pagamento.
-    successUrl: 'https://professor-do-futuro-vendas.vercel.app/obrigado.html',
-    pendingUrl: 'https://professor-do-futuro-vendas.vercel.app/pendente.html',
-    failureUrl: 'https://professor-do-futuro-vendas.vercel.app/falha.html'
+    successUrl: 'https://professordofuturovendas.vercel.app/obrigado.html',
+    pendingUrl: 'https://professordofuturovendas.vercel.app/pendente.html',
+    failureUrl: 'https://professordofuturovendas.vercel.app/falha.html'
   };
 })();
