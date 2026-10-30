@@ -83,7 +83,8 @@
     "MTH10": 970,   // 10% de desconto -> R$ 87,30
     "CRR10": 970,   // 10% de desconto -> R$ 87,30
     "VRG10": 970,   // 10% de desconto -> R$ 87,30
-    "JSA10": 970    // 10% de desconto -> R$ 87,30
+    "JSA10": 970,   // 10% de desconto -> R$ 87,30
+    "PMZ10": 970    // 10% de desconto -> R$ 87,30
   };
 
   // Estado do cupom aplicado (preenchido quando o usuário clica em "Aplicar desconto")
