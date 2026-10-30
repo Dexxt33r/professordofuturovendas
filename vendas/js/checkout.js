@@ -120,8 +120,11 @@
         var btnValor = document.querySelector(".preco-atual");
         if (btnValor) btnValor.textContent = "R$ " + (valorFinal / 100).toFixed(2);
 
+        // Atualiza o texto do botão com o preço com desconto
+        btn.textContent = "Quero meu acesso por R$ " + (valorFinal / 100).toFixed(2);
+
         // Prossegue para pagamento com o cupom aplicado
-        prosseguirParaPagamento(name, email, null, cupomAplicado, afiliado, precoCheio, descontoCentavos, valorFinal, btn);
+        prosseguirParaPagamento(name, email, null, cupomAplicado, afiliado, precoCheio, descontoCentavos, valorFinal, btn, btn.textContent);
       } else {
         setLoading(btn, false, "Quero meu acesso por R$ 97");
         var listaCupons = Object.keys(CUPONS_VALIDOS).join(", ");
@@ -130,13 +133,13 @@
       return;
     }
 
-    prosseguirParaPagamento(name, email, null, "", afiliado, precoCheio, 0, precoCheio, btn);
+    prosseguirParaPagamento(name, email, null, "", afiliado, precoCheio, 0, precoCheio, btn, btn.textContent);
   }
 
-  function prosseguirParaPagamento(name, email, password, cupom, afiliado, precoCheio, descontoCentavos, valorFinal, btn) {
+  function prosseguirParaPagamento(name, email, password, cupom, afiliado, precoCheio, descontoCentavos, valorFinal, btn, btnText) {
     if (!password) password = generatePassword();
     storeCustomer(email, name, password);
-    setLoading(btn, true, "Quero meu acesso por R$ 97", "Abrindo checkout…");
+    setLoading(btn, true, btnText || "Quero meu acesso por R$ 97", "Abrindo checkout…");
 
     function withCredentials(url) {
       try {
