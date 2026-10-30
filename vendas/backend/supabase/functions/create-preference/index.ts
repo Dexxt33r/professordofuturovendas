@@ -57,6 +57,9 @@ serve(async (req) => {
     const productId: string = body.product_id || '';
     const customer = body.customer || {};
     const backUrls = body.back_urls || {};
+    const cupomCodigo: string = body.cupom_codigo || '';
+    const descontoCentavos: number = body.desconto_centavos || 0;
+    const valorFinalCentavos: number = body.valor_final_centavos || 0;
 
     // Força URLs ABSOLUTAS de retorno (o Mercado Pago exige e o navegador
     // pode ter cache antigo enviando caminhos relativos como "pendente.html").
@@ -83,7 +86,8 @@ serve(async (req) => {
           title: product.title,
           quantity: 1,
           currency_id: 'BRL',
-          unit_price: product.unit_price,
+          // Aplica desconto do cupom se fornecido; senão usa o preço cheio do produto
+          unit_price: valorFinalCentavos > 0 ? valorFinalCentavos / 100 : product.unit_price,
           // Habilita parcelamento (Mercado Pago decide as condições)
           payment_methods: {
             installments: 3,
@@ -110,6 +114,9 @@ serve(async (req) => {
         customer_name: name,
         product_id: productId,
         customer_password: password,
+        cupom_codigo: cupomCodigo || '',
+        desconto_centavos: descontoCentavos,
+        valor_final_centavos: valorFinalCentavos,
       },
     };
 
