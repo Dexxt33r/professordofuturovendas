@@ -86,14 +86,70 @@
     "JSA10": 970    // 10% de desconto -> R$ 87,30
   };
 
+  // Estado do cupom aplicado (preenchido quando o usuário clica em "Aplicar desconto")
+  var estadoCupom = {
+    codigo: "",
+    descontoCentavos: 0,
+    valorFinal: 0,
+    precoCheio: 0,
+    aplicado: false
+  };
+
+  function aplicarCupom() {
+    var cupomField = $id("cliente_cupom");
+    var msgEl = $id("msg_cupom");
+    var btnCompra = document.querySelector(".checkout-form button[type=submit]");
+
+    if (!cupomField) return;
+
+    var cupom = (cupomField.value || "").trim();
+    clearErrors();
+
+    if (!cupom) {
+      msgEl.textContent = "";
+      msgEl.className = "cupom-msg";
+      estadoCupom = { codigo: "", descontoCentavos: 0, valorFinal: 0, precoCheio: 0, aplicado: false };
+      if (btnCompra) btnCompra.textContent = "Quero meu acesso por R$ 97";
+      return;
+    }
+
+    var cupomUpper = cupom.toUpperCase();
+    if (CUPONS_VALIDOS.hasOwnProperty(cupomUpper)) {
+      var priceCents = (typeof cfg.priceCents === "number" ? cfg.priceCents : 0);
+      var desconto = CUPONS_VALIDOS[cupomUpper];
+      var valorFinal = priceCents - desconto;
+
+      estadoCupom = {
+        codigo: cupomUpper,
+        descontoCentavos: desconto,
+        valorFinal: valorFinal,
+        precoCheio: priceCents,
+        aplicado: true
+      };
+
+      msgEl.textContent = "Cupom aplicado! Você economiza R$ " + (desconto / 100).toFixed(2);
+      msgEl.className = "cupom-msg success";
+
+      if (btnCompra) {
+        btnCompra.textContent = "Quero meu acesso por R$ " + (valorFinal / 100).toFixed(2);
+        btnCompra.classList.add("btn-compra-principal");
+      }
+
+      cupomField.closest(".field").classList.remove("invalid");
+    } else {
+      msgEl.textContent = "Cupom inválido. Tente: " + Object.keys(CUPONS_VALIDOS).join(", ");
+      msgEl.className = "cupom-msg error";
+      estadoCupom = { codigo: "", descontoCentavos: 0, valorFinal: 0, precoCheio: 0, aplicado: false };
+      showError(cupomField, "Cupom inválido.");
+    }
+  }
+
   function startCheckout(form, btn) {
     var nameField = $id("cliente_nome");
     var emailField = $id("cliente_email");
-    var cupomField = $id("cliente_cupom");
 
     var name = nameField ? nameField.value.trim() : "";
     var email = normalizeEmail(emailField ? emailField.value : "");
-    var cupom = (cupomField ? cupomField.value : "").trim();
 
     clearErrors();
     var ok = true;
@@ -101,37 +157,12 @@
     if (!isValidEmail(email)) { showError(emailField, "Informe um e-mail válido."); ok = false; }
     if (!ok) return;
 
-    var priceCents = (typeof cfg.priceCents === "number" ? cfg.priceCents : 0);
-    var precoCheio = priceCents;
-    var descontoCentavos = 0;
-    var valorFinal = precoCheio;
-    var cupomAplicado = "";
+    var precoCheio = estadoCupom.precoCheio || (typeof cfg.priceCents === "number" ? cfg.priceCents : 0);
+    var descontoCentavos = estadoCupom.descontoCentavos || 0;
+    var valorFinal = estadoCupom.valorFinal || precoCheio;
+    var cupomAplicado = estadoCupom.codigo || "";
 
-    if (cupom) {
-      var cupomUpper = cupom.toUpperCase();
-      if (CUPONS_VALIDOS.hasOwnProperty(cupomUpper)) {
-        descontoCentavos = CUPONS_VALIDOS[cupomUpper];
-        valorFinal = precoCheio - descontoCentavos;
-        cupomAplicado = cupomUpper;
-
-        // Atualiza o preço exibido na interface imediatamente
-        var btnValor = document.querySelector(".preco-atual");
-        if (btnValor) btnValor.textContent = "R$ " + (valorFinal / 100).toFixed(2);
-
-        // Atualiza o texto do botão com o preço com desconto
-        btn.textContent = "Quero meu acesso por R$ " + (valorFinal / 100).toFixed(2);
-
-        // Prossegue para pagamento com o cupom aplicado
-        prosseguirParaPagamento(name, email, null, cupomAplicado, precoCheio, descontoCentavos, valorFinal, btn, btn.textContent);
-      } else {
-        setLoading(btn, false, "Quero meu acesso por R$ 97");
-        var listaCupons = Object.keys(CUPONS_VALIDOS).join(", ");
-        showError(cupomField, "Cupom inválido ou não encontrado. Cupons disponíveis: " + listaCupons);
-      }
-      return;
-    }
-
-    prosseguirParaPagamento(name, email, null, "", precoCheio, 0, precoCheio, btn, btn.textContent);
+    prosseguirParaPagamento(name, email, null, cupomAplicado, precoCheio, descontoCentavos, valorFinal, btn, btn.textContent);
   }
 
   function prosseguirParaPagamento(name, email, password, cupom, precoCheio, descontoCentavos, valorFinal, btn, btnText) {
@@ -205,6 +236,12 @@
         startCheckout(form, btn);
       });
     });
+
+    // Botão "Aplicar desconto" ao lado do campo de cupom
+    var btnAplicar = $id("btn_aplicar_cupom");
+    if (btnAplicar) {
+      btnAplicar.addEventListener("click", aplicarCupom);
+    }
   }
 
   if (document.readyState === "loading") {

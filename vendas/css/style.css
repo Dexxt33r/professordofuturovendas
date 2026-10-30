@@ -483,12 +483,154 @@ ul { list-style: none; }
   .top-actions .btn { white-space: nowrap; padding: .6rem 1rem; font-size: .9rem; }
 }
 
-/* ---------- Cupom e preço no formulário de checkout ---------- */
-.preco-display { margin-top: 0.8rem; font-weight: 700; color: var(--indigo-900); font-size: 1.1rem; }
-.preco-atual { color: var(--violet-600); }
+/* ---------- Checkout Glassmorphism ---------- */
+.checkout-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 28px;
+  padding: 2.5rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+  max-width: 520px;
+  margin: 2rem auto;
+  position: relative;
+  overflow: hidden;
+}
+.checkout-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 3px;
+  background: var(--grad);
+}
 
-.field input#cliente_cupom { text-transform: uppercase; }
+/* Título do checkout */
+.checkout-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--indigo-900);
+  margin-bottom: 1.5rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
 
-/* ---------- Efeito de carregamento no botão ---------- */
+/* Cupom row */
+.cupom-row {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+.cupom-field {
+  flex: 1;
+}
+.cupom-field label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+  margin-bottom: 0.4rem;
+  display: block;
+}
+.cupom-field input {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  font-size: 1rem;
+  text-transform: uppercase;
+  background: rgba(255,255,255,0.6);
+  transition: .25s;
+}
+.cupom-field input:focus {
+  outline: none;
+  border-color: var(--indigo-800);
+  background: #fff;
+}
+.cupom-field.invalid input { border-color: #ef4444; }
+
+/* Botão aplicar desconto */
+.btn-sm {
+  padding: 0.85rem 1.4rem;
+  font-size: 0.9rem;
+  border-radius: 12px;
+  white-space: nowrap;
+}
+.btn-outline.btn-sm {
+  background: rgba(255,255,255,0.5);
+  color: var(--indigo-800);
+  border-color: var(--indigo-800);
+}
+.btn-outline.btn-sm:hover {
+  background: var(--indigo-800);
+  color: #fff;
+}
+
+/* Mensagem do cupom */
+.cupom-msg {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  min-height: 1.2rem;
+}
+.cupom-msg.success { color: var(--indigo-800); }
+.cupom-msg.error { color: #ef4444; }
+
+/* Campo de texto aprimorado */
+.field input {
+  width: 100%;
+  padding: 0.95rem 1rem;
+  border: 2px solid var(--border);
+  border-radius: 14px;
+  font-size: 1rem;
+  background: rgba(255,255,255,0.6);
+  transition: .25s;
+}
+.field input:focus {
+  outline: none;
+  border-color: var(--indigo-800);
+  background: #fff;
+}
+.field.invalid input { border-color: #ef4444; }
+
+/* Botão de compra principal mais atraente */
+.btn-compra-principal {
+  background: var(--grad);
+  color: #fff;
+  font-size: 1.1rem;
+  padding: 1.1rem 2rem;
+  border-radius: 16px;
+  box-shadow: 0 15px 35px rgba(201,151,28,.45);
+  transition: .25s;
+  border: none;
+  cursor: pointer;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.btn-compra-principal:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 40px rgba(201,151,28,.6);
+}
+
+/* Remover preço embaixo (não usado mais) */
+.preco-display { display: none !important; }
+
+/* ---------- Efeito de carregamento ---------- */
 .loading-spinner { display: inline-block; width: 16px; height: 16px; border: 2px solid rgba(255,255,255,.4); border-top-color: #fff; border-radius: 50%; animation: spin 0.8s linear infinite; margin-right: .5rem; }
 @keyframes spin { to { transform: rotate(360deg); } }
+
+/* Responsivo checkout */
+@media (max-width: 560px) {
+  .checkout-card { padding: 1.5rem; margin: 1rem auto; }
+  .cupom-row { flex-direction: column; align-items: stretch; }
+  .btn-sm { width: 100%; justify-content: center; }
+}

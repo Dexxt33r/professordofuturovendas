@@ -442,7 +442,7 @@
           <span>⚡ Acesso imediato</span>
         </div>
 
-        <form class="checkout-form" novalidate>
+        <div class="checkout-card"><div class="checkout-title">🎓 Inscreva-se Agora</div><form class="checkout-form" novalidate>
           <div class="field">
             <label for="cliente_nome">Seu nome</label>
             <input type="text" id="cliente_nome" name="nome" placeholder="Nome completo" autocomplete="name" required>
@@ -453,8 +453,8 @@
             <input type="email" id="cliente_email" name="email" placeholder="voce@exemplo.com" autocomplete="email" required>
             <div class="field-error">Informe um e-mail válido — é nele que você recebe seu acesso.</div>
           </div>
-          <div class="field"><label for="cliente_cupom">Cupom de desconto (opcional)</label><input type="text" id="cliente_cupom" name="cupom" placeholder="Ex: THY10" autocomplete="off"><div class="field-error">Cupom invalido.</div></div><div class="preco-display"><span class="preco-atual">R$ 97,00</span></div><button type="submit" class="btn btn-primary btn-block btn-lg">Quero meu acesso por R$ 97</button>
-        </form>
+          <div class="cupom-row"><div class="field cupom-field"><label for="cliente_cupom">Cupom de desconto</label><input type="text" id="cliente_cupom" name="cupom" placeholder="Ex: THY10" autocomplete="off"><div class="field-error">Cupom inválido.</div></div><button type="button" id="btn_aplicar_cupom" class="btn btn-outline btn-sm">Aplicar desconto</button><div id="msg_cupom" class="cupom-msg"></div></div><button type="submit" class="btn btn-primary btn-block btn-lg">Quero meu acesso por R$ 97</button>
+        </form></div>
         <p class="form-note">🔒 Pagamento seguro via Mercado Pago · acesso por e-mail na hora · <b>garantia de 7 dias</b></p>
         <ul class="price-includes">
           <li><span class="b">✓</span><span>6 módulos completos + 2 decks bônus</span></li>
