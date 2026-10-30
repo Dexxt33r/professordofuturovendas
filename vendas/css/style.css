@@ -487,8 +487,7 @@ ul { list-style: none; }
 .preco-display { margin-top: 0.8rem; font-weight: 700; color: var(--indigo-900); font-size: 1.1rem; }
 .preco-atual { color: var(--violet-600); }
 
-.field input#cliente_cupom,
-.field input#cliente_afiliado { text-transform: uppercase; }
+.field input#cliente_cupom { text-transform: uppercase; }
 
 /* ---------- Efeito de carregamento no botão ---------- */
 .loading-spinner { display: inline-block; width: 16px; height: 16px; border: 2px solid rgba(255,255,255,.4); border-top-color: #fff; border-radius: 50%; animation: spin 0.8s linear infinite; margin-right: .5rem; }

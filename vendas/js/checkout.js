@@ -90,12 +90,10 @@
     var nameField = $id("cliente_nome");
     var emailField = $id("cliente_email");
     var cupomField = $id("cliente_cupom");
-    var afiliadoField = $id("cliente_afiliado");
 
     var name = nameField ? nameField.value.trim() : "";
     var email = normalizeEmail(emailField ? emailField.value : "");
     var cupom = (cupomField ? cupomField.value : "").trim();
-    var afiliado = (afiliadoField ? afiliadoField.value : "").trim();
 
     clearErrors();
     var ok = true;
@@ -124,7 +122,7 @@
         btn.textContent = "Quero meu acesso por R$ " + (valorFinal / 100).toFixed(2);
 
         // Prossegue para pagamento com o cupom aplicado
-        prosseguirParaPagamento(name, email, null, cupomAplicado, afiliado, precoCheio, descontoCentavos, valorFinal, btn, btn.textContent);
+        prosseguirParaPagamento(name, email, null, cupomAplicado, precoCheio, descontoCentavos, valorFinal, btn, btn.textContent);
       } else {
         setLoading(btn, false, "Quero meu acesso por R$ 97");
         var listaCupons = Object.keys(CUPONS_VALIDOS).join(", ");
@@ -133,10 +131,10 @@
       return;
     }
 
-    prosseguirParaPagamento(name, email, null, "", afiliado, precoCheio, 0, precoCheio, btn, btn.textContent);
+    prosseguirParaPagamento(name, email, null, "", precoCheio, 0, precoCheio, btn, btn.textContent);
   }
 
-  function prosseguirParaPagamento(name, email, password, cupom, afiliado, precoCheio, descontoCentavos, valorFinal, btn, btnText) {
+  function prosseguirParaPagamento(name, email, password, cupom, precoCheio, descontoCentavos, valorFinal, btn, btnText) {
     if (!password) password = generatePassword();
     storeCustomer(email, name, password);
     setLoading(btn, true, btnText || "Quero meu acesso por R$ 97", "Abrindo checkout…");
@@ -154,7 +152,6 @@
       product_id: cfg.productId,
       customer: { name: name, email: email, password: password },
       cupom_codigo: cupom || "",
-      codigo_afiliado: afiliado || "",
       desconto_centavos: descontoCentavos,
       valor_final_centavos: valorFinal,
       back_urls: {
@@ -180,8 +177,7 @@
               currency: "BRL",
               value: valorFinal / 100,
               product: cfg.productName || "Professor do Futuro",
-              cupom: cupom || "",
-              afiliado: afiliado || ""
+              cupom: cupom || ""
             });
           }
           // Redireciona para o Checkout do Mercado Pago
